@@ -1,0 +1,14 @@
+version: '2'
+services:
+    jwtteste-app:
+        image: jwtteste
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://jwtteste-postgresql:5432/jwtteste
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    jwtteste-postgresql:
+        extends:
+            file: postgresql.yml
+            service: jwtteste-postgresql
